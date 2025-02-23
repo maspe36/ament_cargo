@@ -1,0 +1,9 @@
+[package]
+name = "ament_cargo"
+version = "0.1.0"
+authors = [
+    "Sam Privett <sam@privett.dev>"
+]
+edition = "2021"
+description = "Development dependency for ament integration with Cargo."
+keywords = ["cargo", "ament", "ros2"]
