@@ -23,6 +23,7 @@ macro_rules! ament_package {
         let pkg_name = env!("CARGO_PKG_NAME");
         let pkg_path = env!("CARGO_MANIFEST_DIR");
 
+        // These are not real colcon env vars. These are env vars we need to set when invoking cargo via colcon.
         let colcon_ws_root = env::var("COLCON_WS_BASE").unwrap_or_default();
         let install_base = env::var("COLCON_INSTALL_BASE").unwrap_or_default();
 
@@ -30,6 +31,7 @@ macro_rules! ament_package {
         // pure cargo build. We do not want to panic because the build script should succeed
         // even if we aren't building with colcon.
         if colcon_ws_root.is_empty() || install_base.is_empty() {
+            println!("cargo:warning=Colcon workspace root or install base not found, skipping ament index registration.");
             return;
         }
 
